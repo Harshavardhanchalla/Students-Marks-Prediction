@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Student Mark Predictor ML App</title>
+
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      color: #2c3e50;
+      font-family: 'Helvetica', sans-serif;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      color: #16a085;
+      font-family: 'Helvetica', sans-serif;
+      margin-top: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: #ffffff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    input[type="number"] {
+      width: calc(100% - 24px);
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .button_css {
+      color: #ffffff !important;
+      text-transform: uppercase;
+      text-decoration: none;
+      background: #3498db;
+      padding: 15px 30px;
+      border: none;
+      display: inline-block;
+      transition: all 0.4s ease 0s;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .button_css:hover {
+      background: #2980b9;
+      transition: all 0.4s ease 0s;
+    }
+
+    .banner img {
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Show Oxstandhard University Banner -->
+    <div class="banner">
+      <img src="static/images/college_banner2.png" alt="University Banner">
+    </div>
+
+    <!-- Form Get input to predict Marks -->
+    <center>
+      <form action="{{ url_for('predict') }}" method="post">
+        <h1>Enter Your Study Hours to Predict Marks</h1>
+        <div class="form-group">
+          <input type="number" name="study_hours" placeholder="Study hours" required="required">
+        </div>
+        <button type="submit" class="button_css"><strong>Predict Marks</strong></button>
+      </form>
+    </center>
+
+    <!-- Show predicted output using ML model -->
+    <div class="footer">
+      <h2>{{ prediction_text }}</h2>
+    </div>
+  </div>
+</body>
+</html>
